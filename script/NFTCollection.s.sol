@@ -6,8 +6,7 @@ import {Script} from "forge-std/Script.sol";
 import {NFTCollection} from "../src/NFTCollection.sol";
 
 contract DeployNFTCollection is Script {
-    
-    function run() external returns(NFTCollection) {
+    function run() external returns (NFTCollection) {
         uint256 deployPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployPrivateKey);
         string memory name_ = "RalphMcRalph NFT";

@@ -6,7 +6,6 @@ import "../lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import {Strings} from "../lib/openzeppelin-contracts/contracts/utils/Strings.sol";
 
 contract NFTCollection is ERC721 {
-
     using Strings for uint256;
 
     // === Variables ===
@@ -19,7 +18,9 @@ contract NFTCollection is ERC721 {
     event MintNFT(address userAddress_, uint256 tokenId_);
 
     // === Constructor ===
-    constructor(string memory name_, string memory symbol_, uint256 totalSupply_, string memory baseUri_) ERC721(name_, symbol_) {
+    constructor(string memory name_, string memory symbol_, uint256 totalSupply_, string memory baseUri_)
+        ERC721(name_, symbol_)
+    {
         totalSupply = totalSupply_;
         baseUri = baseUri_;
     }
@@ -34,11 +35,11 @@ contract NFTCollection is ERC721 {
         emit MintNFT(msg.sender, id);
     }
 
-    function _baseURI() internal override view virtual returns (string memory) {
+    function _baseURI() internal view virtual override returns (string memory) {
         return baseUri;
     }
 
-    function tokenURI(uint256 tokenId) public view override virtual returns (string memory) {
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         _requireOwned(tokenId);
 
         string memory baseURI = _baseURI();

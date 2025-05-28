@@ -1,66 +1,108 @@
-## Foundry
+# 🖼️ RalphMcRalph NFT – Minimal Gas-Efficient NFT Collection on Ethereum
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+![Solidity](https://img.shields.io/badge/Solidity-0.8.24-blue?style=flat&logo=solidity)
+![License](https://img.shields.io/badge/License-LGPL--3.0--only-green?style=flat)
+![Tested](https://img.shields.io/badge/Deploy-OpenSea-blue?style=flat&logo=opensea)
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 📌 Description
 
-## Documentation
+**RalphMcRalph NFT** is a minimalist ERC721 collection built with Solidity, optimized for gas-efficiency and deployable using Foundry.
 
-https://book.getfoundry.sh/
+The collection includes:
 
-## Usage
+- 🎨 Fully on-chain minting logic
+- 🧩 Custom metadata resolution using `baseURI`
+- 🔢 Configurable total supply
+- 🧪 Deploy script with Foundry `forge-std/Script.sol`
 
-### Build
+✅ Deployed and visible on [OpenSea Marketplace](https://opensea.io/collection/ralphmcralph-nft)
 
-```shell
-$ forge build
+---
+
+## 📷 Preview
+
+![NFT Sample](./uri/image.avif)
+
+---
+
+## 📁 Structure
+
+```
+├── src/
+│   └── NFTCollection.sol            # Main ERC721 contract
+├── script/
+│   └── DeployNFTCollection.s.sol    # Deployment script using Foundry
+├── uri/
+│   └── image.avif                   # NFT image example
 ```
 
-### Test
+---
 
-```shell
-$ forge test
+## 🚀 Usage
+
+### 🧱 Constructor Parameters
+
+```solidity
+constructor(
+    string memory name_,
+    string memory symbol_,
+    uint256 totalSupply_,
+    string memory baseUri_
+)
 ```
 
-### Format
+Example:
 
-```shell
-$ forge fmt
+```solidity
+"RalphMcRalph NFT", "RMRNFT", 2, "ipfs://bafybeihluphxhlx5dcat3e26twlgofqpdklhriqhrnpyuxr4qruzv7sbiq/"
 ```
 
-### Gas Snapshots
+---
 
-```shell
-$ forge snapshot
+## 🛠 Functions
+
+### `mint()`
+
+Mints one NFT per call. Reverts if supply cap is reached.
+
+```solidity
+function mint() external
 ```
 
-### Anvil
+---
 
-```shell
-$ anvil
+### `tokenURI(uint256 tokenId)`
+
+Returns the full metadata URI:
+
+```solidity
+ipfs://[base]/[tokenId].json
 ```
 
-### Deploy
+---
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+## 📦 Deployment (Foundry)
+
+```bash
+forge script script/DeployNFTCollection.s.sol:DeployNFTCollection \
+  --rpc-url $RPC_URL \
+  --broadcast \
+  --private-key $PRIVATE_KEY \
+  --verify
 ```
 
-### Cast
+---
 
-```shell
-$ cast <subcommand>
-```
+## 📄 License
 
-### Help
+Licensed under the **GNU Lesser General Public License v3.0** – see [`LICENSE`](./LICENSE)
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+---
+
+## 🙋 Author
+
+Made with ❤️ to demonstrate ERC721 minimal practices for NFT collections. Explore it on OpenSea:
+
+🔗 [opensea.io/collection/ralphmcralph-nft](https://opensea.io/collection/ralphmcralph-nft)
