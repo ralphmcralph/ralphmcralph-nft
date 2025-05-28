@@ -1,0 +1,11 @@
+{
+  "name": "NFT 0 RalphMcRalph",
+  "description": "NFT collection by RalphMcRalph",
+  "image": "ipfs://bafybeih3vtzolii5cnbjiihpbcjedbak7ezfpmmb6u7oo2grltkgjfp6om",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "0"
+    }
+  ]
+}
